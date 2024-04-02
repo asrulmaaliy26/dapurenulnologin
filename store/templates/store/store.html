@@ -1,0 +1,24 @@
+{% extends 'store/main.html' %} 
+{% load static %} 
+
+{% block content %}
+<div class="row">
+  {% for product in products %}
+  <div class="col-lg-4">
+    <div class="card mb-4 box-element product">
+      <img class="card-img-top" src="{{product.imageURL}}" alt="{{product.name}}" />
+      <div class="card-body">
+        <h5 class="card-title"><strong>{{product.name}}</strong></h5>
+        <p class="card-text">
+          <a href="{% url 'add_item' product.id %}" class="btn btn-outline-secondary btn-sm add-btn">Add to Cart</a>
+          <a class="btn btn-outline-success btn-sm ml-2" href="{{product.imageURL}}">View</a>
+        </p>
+        <h4 class="text-right">
+          <strong>Rp {{product.price}}</strong>
+        </h4>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}
